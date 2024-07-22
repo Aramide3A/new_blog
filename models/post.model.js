@@ -5,8 +5,14 @@ const schema = mongoose.Schema({
     image : {
         type : String
     },
-    title : String,
-    body : String,
+    title :   {
+        type: String,
+        required: true
+    },
+    body :  {
+        type: String,
+        required: true
+    },
     date : {
         type : Date,
         default : Date.now()

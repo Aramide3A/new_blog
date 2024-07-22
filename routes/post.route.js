@@ -5,7 +5,7 @@ const multer  = require('multer')
 const upload = multer({ dest: 'public/images' })
 
 //Route to get all posts
-router.get('/posts', async(req, res)=>{
+router.get('/', async(req, res)=>{
     try {
         const all_posts = await posts.find().select('-body')
         res.send(all_posts)
@@ -15,7 +15,7 @@ router.get('/posts', async(req, res)=>{
 })
 
 //Route to create posts
-router.post('/posts',upload.single('image'), async(req, res)=>{
+router.post('/',upload.single('image'), async(req, res)=>{
     try {
         const image = req.file ? req.file.path : null
         const {author,title,body,category} = req.body
@@ -48,10 +48,21 @@ router.put('/:id', async(req, res)=>{
 })
 
 //Route to delete post
-router.get('/:id', async(req, res)=>{
+router.delete('/:id', async(req, res)=>{
     try {
         const get_post = await posts.findByIdAndDelete(req.params.id)
         res.send("Post deleted successfully")
+    } catch (error) {
+        res.status(400).send(error)
+    }
+})
+
+//Route to see post by catgeory
+router.get('/category/:category', async(req, res)=>{
+    try {
+        category = req.params.category
+        const get_post = await posts.find({category: category}).select('-body')
+        res.send(get_post)
     } catch (error) {
         res.status(400).send(error)
     }

@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 const postRouter = require('./routes/post.route')
 require('dotenv').config()
 
-app.use('/api', postRouter)
+app.use('/api/posts', postRouter)
 app.use(express.json())
 
 
@@ -15,3 +15,4 @@ app.listen(PORT, ()=>{
 
 mongoose.connect(process.env.MongoURI)
     .then(() => console.log('Database Connected!'))
+    .catch((error)=>console.log(error))
