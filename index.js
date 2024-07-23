@@ -5,10 +5,12 @@ const postRouter = require('./routes/post.route')
 require('dotenv').config()
 const swaggerUI = require('swagger-ui-express')
 const specs = require('./swagger')
+const cors = require('cors')
 
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(specs))
 app.use('/api/posts', postRouter)
 app.use(express.json())
+app.use(cors())
 
 
 const PORT = 3000||process.env.PORT
