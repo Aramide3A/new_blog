@@ -10,7 +10,9 @@ const cors = require('cors')
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(specs))
 app.use('/api/posts', postRouter)
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+    origin: 'http://localhost:3000'
+  }))
 
 
 const PORT = 3000||process.env.PORT
