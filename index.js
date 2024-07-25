@@ -7,7 +7,7 @@ const swaggerUI = require('swagger-ui-express')
 const specs = require('./swagger')
 const cors = require('cors')
 
-pp.use(express.json());
+app.use(express.json());
 app.use(cors({ origin: 'http://localhost:3000' }));
 
 // API Documentation
