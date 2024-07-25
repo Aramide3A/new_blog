@@ -9,6 +9,7 @@ const cors = require('cors')
 
 app.use(express.json());
 app.use(cors({ origin: 'http://localhost:3000' }));
+app.use('/public', express.static('public'));
 
 // API Documentation
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(specs));

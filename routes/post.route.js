@@ -85,7 +85,7 @@ router.get('/', async(req, res)=>{
 //Route to create posts
 router.post('/',upload.single('image'), async(req, res)=>{
     try {
-        const image = req.file ? req.file.path : null
+        const image = req.file ? path.join('images', req.file.filename) : null
         const {author,title,body,category} = req.body
         const post = new posts({author,title,body,category,image})
         await post.save();
