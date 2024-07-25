@@ -11,7 +11,7 @@ app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(specs))
 app.use('/api/posts', postRouter)
 app.use(express.json())
 app.use(cors({
-    origin: 'http://localhost:3000'
+    origin: 'http://localhost:3000', 
   }))
 
 
