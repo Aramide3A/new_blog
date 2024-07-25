@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const posts = require('../models/post.model')
 const multer  = require('multer')
+const path = require('path');
 const upload = multer({ dest: 'public/images' })
 
 /**
