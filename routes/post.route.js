@@ -176,7 +176,7 @@ router.delete('/:id', async(req, res)=>{
 router.get('/category/:category', async(req, res)=>{
     try {
         category = req.params.category
-        const get_post = await posts.find({category: category}).select('-body')
+        const get_post = await posts.find({category: category})
         res.send(get_post)
     } catch (error) {
         res.status(500).send(error)
