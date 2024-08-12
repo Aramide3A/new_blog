@@ -7,7 +7,7 @@ const swaggerUI = require('swagger-ui-express')
 const specs = require('./swagger')
 const cors = require('cors')
 
-app.use(cors({ origin: ['http://localhost:3000','https://blog-mu-inky-78.vercel.app/']}));
+app.use(cors({ origin: ['http://localhost:3000','https://blog-mu-inky-78.vercel.app']}));
 app.use(express.json());
 app.use('/public', express.static('public'));
 
