@@ -9,13 +9,13 @@ const createBlog = async (req, res) => {
         const words = body.split(/\s+/).filter(Boolean).length;
         const reading_time = Math.ceil(words / 200);
 
-        const newPost = await Post.create({ 
-            author: req.user._id, 
-            title, 
-            description, 
-            body, 
-            tags, 
-            reading_time 
+        const newPost = await Post.create({
+            author: req.user._id,
+            title,
+            description,
+            body,
+            tags,
+            reading_time
         });
 
         res.status(201).json({ message: 'Blog successfully created!', data: newPost });
@@ -63,7 +63,7 @@ const publishBlog = async (req, res) => {
 
         const { id } = req.params;
 
-        let post = await Post.findById(id);
+        let post = await Post.findById({ _id: id });
         if (!post) return res.status(404).json({ message: 'Not found' });
 
         if (post.author.toString() !== req.user._id.toString()) {
@@ -86,7 +86,7 @@ const deleteBlog = async (req, res) => {
 
         const { id } = req.params;
 
-        let post = await Post.findById(id);
+        let post = await Post.findById({ _id: id });
         if (!post) return res.status(404).json({ message: 'Not found' });
 
         if (post.author.toString() !== req.user._id.toString()) {
@@ -135,9 +135,8 @@ const getAllPublished = async (req, res) => {
                     { state: 'published' },
                     {
                         $or: [
-                            { title: { $regex: search, $options:'i' } },
-                            { tags: { $regex: search, $options:'i' } }
-                            // Removed author here because it's an ObjectId
+                            { title: { $regex: search, $options: 'i' } },
+                            { tags: { $regex: search, $options: 'i' } }
                         ]
                     }
                 ]
