@@ -6,16 +6,16 @@ const swaggerDefinition = {
         title : "News blog Api",
         version : '1.0.0'
     },
-    servers: [
-        {
-            url: 'http://localhost:3000',
-            description: 'Local server'
-        },
-        {
-            url: 'https://news-blog-92em.onrender.com',
-            description: 'Production server'
-        }
-    ]
+    // servers: [
+    //     {
+    //         url: 'http://localhost:3000',
+    //         description: 'Local server'
+    //     },
+    //     {
+    //         url: 'https://news-blog-92em.onrender.com',
+    //         description: 'Production server'
+    //     }
+    // ]
 }
 
 const options = {

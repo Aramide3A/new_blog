@@ -1,28 +1,31 @@
+// app.js
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
-const postRouter = require('./routes/post.route')
+const postRoutes = require("./src/routes/post.route")
+const userRoutes = require("./src/routes/user.routes")
 require('dotenv').config()
 const swaggerUI = require('swagger-ui-express')
-const specs = require('./swagger')
+const specs = require("./swagger")
 const cors = require('cors')
+const passport = require('passport')
+require("./src/middleware/passport")
 
-app.use(cors({ origin: ['http://localhost:3000','https://blog-mu-inky-78.vercel.app']}));
-app.use(express.json());
-app.use('/images', express.static('public/images'));
+app.use(cors({}))
+app.use(express.json())
+app.use(passport.initialize())
+
 
 // API Documentation
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(specs));
 
+
 // Routes
-app.use('/api/posts', postRouter);
+app.use('/api', [userRoutes, postRoutes]);
 
-
-const PORT = 3000||process.env.PORT
-app.listen(PORT, ()=>{
-    console.log(`App running on post ${PORT}`)
-})
-
+// Database Connection
 mongoose.connect(process.env.MongoURI)
     .then(() => console.log('Database Connected!'))
-    .catch((error)=>console.log(error))
+    .catch((error) => console.log(error));
+
+module.exports = app;
