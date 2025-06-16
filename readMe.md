@@ -39,15 +39,15 @@ All routes are prefixed with `/api`.
 
 | Method | Endpoint              | Description                                        | Auth Required |
 | :----- | :-------------------- | :------------------------------------------------- | :------------ |
-| `POST` | `/auth/signup`        | Register a new user.                               | No            |
-| `POST` | `/auth/login`         | Log in and receive a JWT.                          | No            |
-| `GET`  | `/posts`              | Get a paginated/searchable list of **published** posts. | No            |
-| `GET`  | `/posts/:id`          | Get a single post by ID. Increments `read_count`.  | No            |
-| `POST` | `/posts`              | Create a new post (saved as `draft`).              | **Yes** |
-| `GET`  | `/posts/my`           | Get a list of the current user's posts.            | **Yes** |
-| `PATCH`| `/posts/:id`          | Update a user's own post.                          | **Yes** |
-| `DELETE`| `/posts/:id`         | Delete a user's own post.                          | **Yes** |
-| `POST` | `/posts/:id/publish`  | Change a post's state from `draft` to `published`. | **Yes** |
+| `POST` | `/api/auth/register`        | Register a new user.                               | No            |
+| `POST` | `/api/auth/login`         | Log in and receive a JWT.                          | No            |
+| `GET`  | `/api/posts`              | Get a paginated/searchable list of **published** posts. | No            |
+| `GET`  | `/api/posts/:id`          | Get a single post by ID. Increments `read_count`.  | No            |
+| `POST` | `/api/posts`              | Create a new post (saved as `draft`).              | **Yes** |
+| `GET`  | `/api/posts/my`           | Get a list of the current user's posts.            | **Yes** |
+| `PATCH`| `/api/posts/:id`          | Update a user's own post.                          | **Yes** |
+| `DELETE`| `/api/posts/:id`         | Delete a user's own post.                          | **Yes** |
+| `POST` | `/api/posts/:id/publish`  | Change a post's state from `draft` to `published`. | **Yes** |
 
 ---
 
